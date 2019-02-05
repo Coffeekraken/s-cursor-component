@@ -1,23 +1,23 @@
-# Coffeekraken s-{component-name}-component <img src=".resources/coffeekraken-logo.jpg" height="25px" />
+# Coffeekraken s-cursor-component <img src=".resources/coffeekraken-logo.jpg" height="25px" />
 
 <p>
-	<!-- <a href="https://travis-ci.org/{repository-path}">
-		<img src="https://img.shields.io/travis/{repository-path}.svg?style=flat-square" />
+	<!-- <a href="https://travis-ci.org/coffeekraken/s-cursor-component">
+		<img src="https://img.shields.io/travis/coffeekraken/s-cursor-component.svg?style=flat-square" />
 	</a> -->
-	<a href="https://www.npmjs.com/package/{npm-package-name}">
-		<img src="https://img.shields.io/npm/v/{npm-package-name}.svg?style=flat-square" />
+	<a href="https://www.npmjs.com/package/coffeekraken-s-cursor-component">
+		<img src="https://img.shields.io/npm/v/coffeekraken-s-cursor-component.svg?style=flat-square" />
 	</a>
-	<a href="https://github.com/{repository-path}/blob/master/LICENSE.txt">
-		<img src="https://img.shields.io/npm/l/{npm-package-name}.svg?style=flat-square" />
+	<a href="https://github.com/coffeekraken/s-cursor-component/blob/master/LICENSE.txt">
+		<img src="https://img.shields.io/npm/l/coffeekraken-s-cursor-component.svg?style=flat-square" />
 	</a>
-	<!-- <a href="https://github.com/{repository-path}">
-		<img src="https://img.shields.io/npm/dt/{npm-package-name}.svg?style=flat-square" />
+	<!-- <a href="https://github.com/coffeekraken/s-cursor-component">
+		<img src="https://img.shields.io/npm/dt/coffeekraken-s-cursor-component.svg?style=flat-square" />
 	</a>
-	<a href="https://github.com/{repository-path}">
-		<img src="https://img.shields.io/github/forks/{repository-path}.svg?style=social&label=Fork&style=flat-square" />
+	<a href="https://github.com/coffeekraken/s-cursor-component">
+		<img src="https://img.shields.io/github/forks/coffeekraken/s-cursor-component.svg?style=social&label=Fork&style=flat-square" />
 	</a>
-	<a href="https://github.com/{repository-path}">
-		<img src="https://img.shields.io/github/stars/{repository-path}.svg?style=social&label=Star&style=flat-square" />
+	<a href="https://github.com/coffeekraken/s-cursor-component">
+		<img src="https://img.shields.io/github/stars/coffeekraken/s-cursor-component.svg?style=social&label=Star&style=flat-square" />
 	</a> -->
 	<a href="https://twitter.com/{twitter-username}">
 		<img src="https://img.shields.io/twitter/url/http/{twitter-username}.svg?style=social&style=flat-square" />
@@ -27,30 +27,33 @@
 	</a>
 </p>
 
-<p class="lead">{component-description}</p>
+<p class="lead">Build highly customizable cursor with ease that can interact with the HTMLElements in your page</p>
 
-[![View demo](http://components.coffeekraken.io/assets/img/view-demo.png)](http://components.coffeekraken.io/app/{component-name}-component)
+[![View demo](http://components.coffeekraken.io/assets/img/view-demo.png)](http://components.coffeekraken.io/app/s-cursor-component)
 
 ## Table of content
 
-1. **[Demo](http://components.coffeekraken.io/app/s-{component-name}-component)**
+1. **[Demo](http://components.coffeekraken.io/app/s-cursor-component)**
 2. [Install](#readme-install)
 3. [Get Started](#readme-get-started)
-4. [Javascript API](doc/js)
-5. [SASS API](doc/sass)
-6. [Sugar Web Components Documentation](https://github.com/coffeekraken/sugar/blob/master/doc/webcomponent.md)
-7. [Browsers support](#readme-browsers-support)
-8. [Code linting](#readme-code-linting)
-9. [Contribute](#readme-contribute)
-10. [Who are Coffeekraken?](#readme-who-are-coffeekraken)
-11. [Licence](#readme-license)
+4. [Handlers](#readme-handlers)
+5. [Provided handlers](#readme-provided-handlers)
+6. [Apply handler on](#readme-apply-handler-on)
+7. [Classes](#readme-classes)
+8. [Javascript API](doc/js)
+9. [Sugar Web Components Documentation](https://github.com/coffeekraken/sugar/blob/master/doc/webcomponent.md)
+10. [Browsers support](#readme-browsers-support)
+11. [Code linting](#readme-code-linting)
+12. [Contribute](#readme-contribute)
+13. [Who are Coffeekraken?](#readme-who-are-coffeekraken)
+14. [Licence](#readme-license)
 
 <a name="readme-install"></a>
 
 ## Install
 
 ```
-npm install coffeekraken-s-{component-name}-component --save
+npm install coffeekraken-s-cursor-component --save
 ```
 
 <a name="readme-get-started"></a>
@@ -60,13 +63,129 @@ npm install coffeekraken-s-{component-name}-component --save
 First, import the component into your javascript file like so:
 
 ```js
-import ComponentName from "coffeekraken-s-{component-name}-component"
+import SCursorComponent from 'coffeekraken-s-cursor-component'
 ```
 
 Then simply use it inside your html like so:
 
 ```html
-<s-{component-name}></s-{component-name}>
+<s-cursor>
+  <!-- this is the pointer element that display at least a tiny dot or something to help the user click where he wants -->
+  <div class="cursor-pointer" cursor-pointer></div>
+  <!-- this is an optional element that can interact with the HTMLElement page like sticking to it, resizing, etc... -->
+  <div class="cursor-sticked" cursor-sticked></div>
+</s-cursor>
+```
+
+You can then skin your cursor as you wish. The display is totaly up to you.
+
+<a id="readme-handlers"></a>
+
+## Handlers
+
+The handlers in this webcomponent are a key part and you need to understand that to release it's power.
+A handler is nothing more than a function that take the `$sticked` element, the `$target` one and do something with them like resizing the `$sticked` element to the `$target` size, or whatever you want.
+
+#### What is a `$target` element?
+
+A `$target` element is any HTMLElement in your page that are marked with the `cursor` attribute. This attribute specify the **handler** to use when the cursor `mousenter` it.
+Here's an example:
+
+```html
+<ul>
+  <li cursor="fit">Item #1</li>
+  <li cursor="fit">Item #2</li>
+  <li cursor="fit">Item #3</li>
+  <li cursor="fit">Item #4</li>
+</ul>
+```
+
+#### What is an **handler**?
+
+If we take the example above, the wanted handler is named `fit`. We need to define this handler. Here's how:
+
+```js
+// we register our handler using this function:
+SCursorComponent.registerHandler('fit', ($sticked, $target) => {
+  // here we can do what we want with the two elements passed as parameters.
+  // in our example, we need to make the $sticked element "fit" the $target one.
+  // here's how:
+
+  // calculate the target offset
+  const targetOffset = offset($target) // offset comes from the sugar toolkit that you can find in the coffeekraken repos
+  // calculate the destinations
+  const destX = targetOffset.left + $target.offsetWidth * 0.5 - scrollLeft() // scrollLeft comes from the sugar toolkit that you can find in the coffeekraken repos
+  const destY = targetOffset.top + $target.offsetHeight * 0.5 - scrollTop() // scrollTop comes from the sugar toolkit that you can find in the coffeekraken repos
+  // make the cursor fit the target
+  anime({
+    // anime is a cool animation engine that you can find on https://animejs.com/
+    targets: $sticked,
+    top: destY,
+    left: destX,
+    width: $target.offsetWidth,
+    height: $target.offsetHeight,
+    duration: 400,
+    easing: 'easeInOutExpo'
+  })
+
+  // we now have our "in" animation. This mean that this code will be executed when the cursor "mouseenter" the $target
+  // we do need to tell our $sticked element how to go back to his initial state when the cursot "mouseleave" the $target
+  // to do that, we return a function here that will do exactly that. Here's how:
+  return stickedInitialSize => {
+    // note that we have access here at an object containing the initial width and height or the $sticked element
+    // here's how code that reset the size of our $sticked element:
+    anime({
+      targets: $sticked,
+      width: stickedInitialSize.width,
+      height: stickedInitialSize.height,
+      duration: 400,
+      easing: 'easeInOutExpo'
+    })
+  }
+})
+```
+
+You do know what's a `$target` element and an **handler** function. This way the hardest part. You're now able to create some cool cursors with HTMLElements, canvas, etc...
+
+<a id="readme-provided-handlers"></a>
+
+## Provided handlers
+
+No need to write every handlers by yourself. We provide you some that you can use directly. Here's the list:
+
+1. `fit`: Make the `$sticked` element fit the `$target` one in size
+2. `fit-square`: Make the `$sticked` element fit the `$target` one in size and ensure that no border-radius is left
+
+If you have any idea or "base" handlers, don't hesitate to contact us.
+
+<a id="readme-apply-handler-on"></a>
+
+## Apply handler on
+
+It can be hard and painful to add on every HTMLElement the `cursor` attribute to enable an **handler** on every buttons for example.
+This is where the function `applyHandlerOn` comes into place.
+This function allows you to set an **handler** on multiple HTMLElement at once using a simple css selector. Here's how:
+
+```js
+SCursorElement.applyHandlerOn('fit', '.btn') // apply the "fit" handler on every ".btn"
+```
+
+This function is a "live" one. Meaning that it will take care of every existing ".btn" in your page AND of every upcoming ".btn" that you may add to your page using ajax or whatever...
+
+<a id="readme-classes"></a>
+
+## Classes
+
+Your component will have some classes applied along his life. Here's the list:
+
+- `sticked`: Applied when the pointer has `mouseenter` a `$target` element. Will be removed on `mouseleave`
+- `{handlerName}`: Applied when the `$sticked` element has been "sticked" by an handler to a `$target`
+- `{cursorClass}`: Class taker from the `$target` element in the `cursor-class` attribute. Useful to customize your cursor using css
+
+Here's an example of `cursor-class` usage:
+
+```html
+<a class="btn" cursor="fit" cursor-class="my-cool-class">Hello World</a>
 ```
 
 <a id="readme-browsers-support"></a>
