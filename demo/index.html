@@ -1,25 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<link rel="stylesheet" href="dist/css/style.css" />
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" href="dist/css/style.css" />
+  </head>
+  <body>
+    <div class="m-b">
+      <button class="btn btn--primary">
+        Hello world</button
+      ><button class="btn btn--secondary">
+        Hello</button
+      ><button class="btn">
+        World</button
+      ><button class="btn btn--secondary">
+        He
+      </button>
+    </div>
 
-  <div class="page">
+    <ul class="menu m-b">
+      <li class="menu__item" cursor="fit">
+        <s-icon driver="fontawesome" icon="far fa-user"></s-icon>
+      </li>
+      <li class="menu__item" cursor="fit">
+        <s-icon driver="fontawesome" icon="fas fa-ad"></s-icon>
+      </li>
+      <li class="menu__item" cursor="fit">
+        <s-icon driver="fontawesome" icon="fas fa-align-center"></s-icon>
+      </li>
+      <li class="menu__item" cursor="fit">
+        <s-icon driver="fontawesome" icon="far fa-user"></s-icon>
+      </li>
+    </ul>
 
-    <button class="btn btn--primary" cursor="fit">
-      Hello world
-    </button><button class="btn btn--secondary" cursor="fit">
-      Hello world
-    </button><button class="btn" cursor="fit">
-      He
-    </button>
+    <ul class="menu menu--text">
+      <li class="menu__item" cursor="fit-square" cursor-class="underline">
+        Menu item #1
+      </li>
+      <li class="menu__item" cursor="fit-square" cursor-class="underline">
+        Menu item #2
+      </li>
+      <li class="menu__item" cursor="fit-square" cursor-class="underline">
+        Menu item #3
+      </li>
+      <li class="menu__item" cursor="fit-square" cursor-class="underline">
+        Menu item #4
+      </li>
+    </ul>
 
-  </div>
+    <s-cursor class="cursor" hide-default-cursor enable-focus>
+      <div class="cursor__pointer" cursor-pointer></div>
+      <div class="cursor__sticked" cursor-sticked></div>
+    </s-cursor>
 
-	<s-cursor class="cursor">
-  </s-cursor>
-
-	<script src="dist/js/app.js"></script>
-</body>
+    <script src="dist/js/app.js"></script>
+  </body>
 </html>

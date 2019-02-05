@@ -1,12 +1,12 @@
 {
-  "name": "coffeekraken-s-component-name-component",
+  "name": "coffeekraken-s-cursor-component",
   "version": "1.0.0",
-  "description": "component-description",
+  "description": "Build highly customizable cursor with ease that can interact with the HTMLElements in your page",
   "main": "dist/index.js",
   "homepage": "http://coffeekraken.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coffeekraken/s-{component-name}-component"
+    "url": "https://github.com/coffeekraken/s-cursor-component"
   },
   "watch": {
     "doc:js": {
@@ -106,6 +106,8 @@
     "babel-loader": "^8.0.0",
     "coffeekraken-code-playground": "^1.0.19",
     "coffeekraken-docblock-to-markdown": "^1.0.0",
+    "coffeekraken-s-button-component": "^1.0.1",
+    "coffeekraken-s-icon-component": "^1.0.4",
     "coffeekraken-s-typography-component": "^1.0.2",
     "coffeekraken-scripts-stack": "^1.0.3",
     "eslint": "^5.13.0",
